@@ -1,13 +1,7 @@
 package xyz.koldfusion.apextracker;
 
-import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 public class Tracker {
     public Integer get_current_player_count() {
