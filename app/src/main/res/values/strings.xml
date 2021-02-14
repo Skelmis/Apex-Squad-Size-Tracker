@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Apex Legends Ranked Tracker</string>
     <string name="content_title">Welcome to the Tracker!</string>
+    <string name="invalid_numbers">The inputs are incorrect.</string>
+    <string name="valid_squad_response">Expected composition of enemy squads:</string>
+    <string name="minus_symbol">-</string>
+    <string name="plus_symbol">+</string>
+    <string name="user_squad_string">How many people are alive on your squad?</string>
+    <string name="overall_players_alive_string">How many players are alive overall, your squad included?</string>
+    <string name="squad_count_string">How many squads are alive, including yours?</string>
 </resources>

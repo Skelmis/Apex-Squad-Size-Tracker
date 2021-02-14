@@ -10,8 +10,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class Tracker {
+    public Integer get_current_player_count() {
+        return current_player_count;
+    }
+
     private Integer current_player_count;
+
+    public Integer get_current_squad_count() {
+        return current_squad_count;
+    }
+
     private Integer current_squad_count;
+
+    public Integer get_players_alive_on_your_squad() {
+        return players_alive_on_your_squad;
+    }
+
     private Integer players_alive_on_your_squad;
 
     public Tracker (){
@@ -64,15 +78,12 @@ public class Tracker {
      * of squads to players is before returning a map of
      * expected team compositions
      */
-    public Map<Integer, Integer> get_expected_squad_compositions(){
-        Map<Integer, Integer> return_data = new HashMap<Integer, Integer>();
+    public ArrayList<SumCounter> get_expected_squad_compositions(){
         Integer player_count = current_player_count;
         Integer squad_count = current_squad_count;
 
         player_count -= players_alive_on_your_squad;
         squad_count --;
-
-        Log.d("OUTPUTFROMTHIGN", "Squad Count: "+ squad_count.toString());
 
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         for (int i = 0; i < squad_count; i++){
@@ -82,19 +93,15 @@ public class Tracker {
             numbers.add(2);
             numbers.add(3);
         }
-        Log.d("OUTPUTFROMTHIGN", "Use-able Numbers: "+ numbers.toString());
-        int target = 9;
-        HashSet<SumCounter> answers = sum_up_recursive(numbers, target, new ArrayList<Integer>(), new HashSet<SumCounter>());
+
+        HashSet<SumCounter> answers = sum_up_recursive(numbers, player_count, new ArrayList<Integer>(), new HashSet<SumCounter>());
         ArrayList<SumCounter> valid_counts = new ArrayList<>();
         for (SumCounter counter : answers){
             if (counter.size() == squad_count) {
                 valid_counts.add(counter);
-                Log.d("OUTPUTFROMTHIGN", "A correct answer: "+ counter.as_array());
             }
         }
-        Log.d("OUTPUTFROMTHIGN", valid_counts.toString());
-
-        return return_data;
+        return valid_counts;
     }
 
     private HashSet<SumCounter> sum_up_recursive(ArrayList<Integer> numbers, int target, ArrayList<Integer> partial, HashSet<SumCounter> output) {
